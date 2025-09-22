@@ -8,7 +8,8 @@
 
 .flip-card {
   background-color: transparent;
-
+  width: 160px;
+  height: 160px;
  
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -64,13 +65,40 @@
   display: grid;
   place-items: center;
   font-size:100px;
-   z-index: 9999;
+   /* z-index: 9999; */
    color: white;
 }
-.container{
+.levelsmention{
+  margin-top: 20px;
+  color: white;
+  font-size: 80px;
+
+}
+.container1{
+    display:grid;
+    grid-template-columns:repeat(3,150px);
+    grid-auto-rows: 150px;
+    gap: 20px;
+    
+    justify-content: center;
+    margin-top: 90px;
+    cursor: pointer;
+}
+.container2{
     display:grid;
     grid-template-columns:repeat(4,150px);
     grid-auto-rows: 150px;
     gap: 20px;
     justify-content: center;
+    margin-top: 90px;
+    cursor: pointer;
+}
+.container3{
+    display:grid;
+    grid-template-columns:repeat(4,150px);
+    grid-auto-rows: 150px;
+    gap: 20px;
+    justify-content: center;
+    cursor: pointer;
+    
 }
