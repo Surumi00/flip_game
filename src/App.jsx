@@ -20,16 +20,23 @@ function App() {
       {!started ? (
         <Home onstart={handlestart} />
       ) : gamestatus === "win" ? (
+        
         <div className="win">
           <h2>🎉 YOU WIN!!!! 🎉</h2>
           <button onClick={handlelevel}>Next Level</button>
         </div>
       ) : gamestatus == "gameover" ? (
+        currentlevel > 3 ? (
+          <div className="win">
+          <h2> Game Over!!!! </h2></div> ):
         <div className="win">
           <h2> Game Over!!!! </h2>
+        
           <button
             onClick={() => {
-              setcurrentlevel(1);
+              if(currentlevel===3){
+                setcurrentlevel(1)
+              }else setcurrentlevel(currentlevel);
               setgamestatus(undefined);
             }}
           >
@@ -39,6 +46,7 @@ function App() {
       ) : (
         <Game
           level={currentlevel}
+          
           onfinished={() => setgamestatus("win")}
           ongameover={() => setgamestatus("gameover")}
         ></Game>

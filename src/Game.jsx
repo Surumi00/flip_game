@@ -4,14 +4,18 @@ import confetti from "canvas-confetti";
 
 function gameStarted({ level, onfinished,ongameover }) {
   const [pieces, setpieces] = useState([]);
-
+  const [chances,setchances]=useState(0);
   let gameIcons = [];
   const level1icons = ["🐢", "🐥", "🐸"];
   const level2icons = ["🦊", "🦄", "🐧", "🐼"];
   const level3icons = ["🌸", "✨", "😊", "💻", "📚", "🌍", "☕", "🎶"];
+  
 
   function startgame() {
-    if (level === 1) gameIcons = [...level1icons];
+    if (level === 1) {
+      gameIcons = [...level1icons];
+     
+    } 
     else if (level === 2) gameIcons = [...level2icons];
     else if (level === 3) gameIcons = [...level3icons];
     else {
@@ -40,6 +44,20 @@ function gameStarted({ level, onfinished,ongameover }) {
   }, [level]);
 
   function handleclick(data) {
+    setchances(prev=>prev+1);
+     if(level===1 && chances > 8){
+        
+        ongameover();
+        return;
+      }
+      if(level===2 && chances > 10){
+        ongameover();
+        return;
+      }
+      if(level===3 && chances > 24){
+        ongameover();
+        return;
+      }
     const flippeddata = pieces.filter((data) => data.flipped && !data.solved);
     if (flippeddata.length === 2) return;
 
